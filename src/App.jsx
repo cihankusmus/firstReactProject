@@ -1,21 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
+import btnImgP from '/add-circle-outline.svg';
+import btnImg from '/vector.svg';
 
-export function MyComponent() {
-  // const myMsg = 'Merhabalar';
-  const myObj = {
-    msg: 'Selamlar',
-    cssClass: 'title'
-  };
+// export function MyComponent() {
+//   // const myMsg = 'Merhabalar';
+//   const myObj = {
+//     msg: 'Selamlar',
+//     cssClass: 'title'
+//   };
 
-  return(
-    <>
-      <h1 className={myObj.cssClass}>{myObj.msg}</h1>
-    </>
-  )
-}
+//   return(
+//     <>
+//       <h1 className={myObj.cssClass}>{myObj.msg}</h1>
+//     </>
+//   )
+// }
 
 // function Welcome() {
 //   let msg = <h2>lutfen giris yapin</h2>;
@@ -61,18 +63,21 @@ export function MyComponent() {
 // }
 
 
-
 function App() {
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(0)
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+  function HandleClicks(e) {
+    setCount(count - 1);
+  }
   function HandleClick(e) {
     setCount(count + 1);
     // setIsLoggedIn(!isLoggedIn);
   }
   return (
     <>
-    <button onClick={HandleClick}>Click Me {count}</button>
+    <button className="productBtn" onClick={HandleClicks}><img src={btnImg} alt=""/></button>
+    {count}
+    <button className="productBtn" onClick={HandleClick}><img src={btnImgP} alt=""/></button>
     {/* {<ProductList></ProductList>} */}
     {/* {isLoggedIn && <Welcome />} */}
     </>

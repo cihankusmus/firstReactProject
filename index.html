@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+    <link rel="stylesheet" href="src/assets/css/style.css">
+    <script src="src/assets/js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Aperatif ve Tatlı Kategorileri</h1>
+      <label for="category">Kategori Seç:</label>
+      <select id="category" onchange="showContent()">
+          <option value="all">Hepsi</option>
+          <option value="collation">Aperatif</option>
+          <option value="dessert">Tatlı</option>
+      </select>
+
+      <div id="aparatifContent" class="content">
+          <h2>Aperatif</h2>
+          <div class="products aperatif">
+              <div class="product">
+                  <img src="public/beef-pizza.png" alt="">
+                  <p>Beef pizza with veggies</p>
+                  <button class="productBtn"><img src="public/vector.svg" alt=""></button>
+                  <button class="productBtn"><img src="public/add-circle-outline.svg" alt=""></button>
+              </div>
+              <div class="product">
+                  <img src="public/meats&veggies.png" alt="">
+                  <p>Meats and veggies</p>
+              </div>
+              <div class="product">
+                  <img src="public/vegetarian-taco.png" alt="">
+                  <p>Vegetarian taco-zucchini</p>
+              </div>
+              <div class="product">
+                  <img src="public/stick-balls.png" alt="">
+                  <p>Stick balls</p>
+              </div>
+              <div class="product">
+                  <img src="public/sushi.png" alt="">
+                  <p>Cold sushi</p>
+              </div>
+          </div>
+      </div>
+
+      <div id="dessertContent" class="content">
+          <h2>Tatlı</h2>
+          <div class="products yemek">
+              <div class="product">
+                  <img src="public/p-cake.png" alt="">
+                  <p>Straberry pink cake</p>
+              </div>
+              <div class="product">
+                  <img src="public/c-cake.png" alt="">
+                  <p>Crisp chocolate cake</p>
+              </div>
+              <div class="product">
+                  <img src="public/latte.png" alt="">
+                  <p>Chocolate ice cream latte</p>
+              </div>
+              <div class="product">
+                  <img src="public/sundae.png" alt="">
+                  <p>Ice cream sundae</p>
+              </div>
+              <div class="product">
+                  <img src="public/ice-cream.png" alt="">
+                  <p>Strawberry ice cream</p>
+              </div>
+          </div>
+      </div>
+      
+  <!-- </div>
+    <div id="root"></div> -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

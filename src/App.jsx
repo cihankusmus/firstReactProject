@@ -18,6 +18,21 @@ function App() {
   const [count, setCount] = useState(0);
   const [isSwitchChecked, setIsSwitchChecked] = useState(false);
 
+  const Duzenle = () => {
+    const [ setIsEditVisible] = useState(false);
+
+    const onChange = (checked) => {
+      setIsSwitchChecked(checked);
+      setIsEditVisible(checked);
+    };
+
+    return (
+      <div>
+        <Switch defaultChecked={isSwitchChecked} onChange={onChange} />
+      </div>
+    );
+  };
+
   const productscollation = [
     {
       id: 1,
@@ -85,7 +100,7 @@ function App() {
   ];
 
   const addToCart = (productName, price) => {
-    const newCart = [...cart, { name: productName, price }];
+    const newCart = [...cart, { name: productName, price, isEditVisible: isSwitchChecked }];
     setCart(newCart);
     setCount(count + price);
   };
@@ -94,28 +109,11 @@ function App() {
     setCart([]);
     setCount(0);
   };
+
   const removeFromCart = (productName, productPrice) => {
     const updatedCart = cart.filter(item => item.name !== productName);
     setCart(updatedCart);
     setCount(count - parseFloat(productPrice));
-  };
-
-  const Duzenle = () => {
-    const duzenleBtn = document.getElementById('duzenleBtn');
-
-    const onChange = (checked) => {
-      setIsSwitchChecked(checked);
-
-      if (checked) {
-        // Switch açıldığında "Düzenle" butonunu göster
-        duzenleBtn.style.display = 'block';
-      } else {
-        // Switch kapandığında "Düzenle" butonunu gizle
-        duzenleBtn.style.display = 'none';
-      }
-    };
-
-    return <Switch defaultChecked={isSwitchChecked} onChange={onChange} />;
   };
 
   const handleCategoryChange = (event) => {
@@ -167,22 +165,21 @@ function App() {
   return (
     <div>
       <h1>Aperatif ve Tatlı Kategorileri</h1>
-      {/* Kategori seçim */}
       <label htmlFor="category">Kategori Seç:</label>
       <select id="category" onChange={handleCategoryChange}>
         <option value="all">Hepsi</option>
         <option value="collation">Aperatif</option>
         <option value="dessert">Tatlı</option>
       </select>
-      {/* Ürünler */}
       <div id="aparatifContent" className="content">
-      <h2>Aperatif</h2>
+        <h2>Aperatif</h2>
         {productList}
       </div>
       <div id="dessertContent" className="content">
-      <h2>Tatlı</h2>
+        <h2>Tatlı</h2>
         {productListDessert}
       </div>
+
 
       <div className="cart">
         <img src={sepetIcn} alt="" />
@@ -191,10 +188,14 @@ function App() {
         <ul className="cartItem">
           {cart.map((item, index) => (
             <li key={index}>
+              
               <button
-              className="duzenleBtn"
-              onClick={() => removeFromCart(item.name, item.price)}
-            >-</button>
+        className="duzenleBtn"
+        style={{ display: isSwitchChecked ? 'block' : 'none' }}
+        onClick={() => removeFromCart(item.name, item.price)}
+      >
+        -
+      </button>
               {item.name}: ${item.price}
             </li>
           ))}
